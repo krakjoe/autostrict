@@ -2,7 +2,7 @@
   +----------------------------------------------------------------------+
   | PHP Version 7                                                        |
   +----------------------------------------------------------------------+
-  | Copyright (c) 1997-2015 The PHP Group                                |
+  | Copyright (c) 2016 The PHP Group                                     |
   +----------------------------------------------------------------------+
   | This source file is subject to version 3.01 of the PHP license,      |
   | that is bundled with this package in the file LICENSE, and is        |
@@ -90,8 +90,8 @@ ZEND_EXT_API zend_extension zend_extension_entry = {
 	PHP_AUTOSTRICT_VERSION,
 	"Joe Watkins <krakjoe@php.net>",
 	"https://github.com/krakjoe/autostrict",
-	"Copyright (c) 2015",
-	zend_auto_start,		/* startup_func_t */
+	"Copyright (c) 2016",
+	php_auto_start,		/* startup_func_t */
 	NULL,           	/* shutdown_func_t */
 	NULL,               /* activate_func_t */
 	NULL,               /* deactivate_func_t */
