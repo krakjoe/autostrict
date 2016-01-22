@@ -6,10 +6,10 @@ This test verifies that by default all code is strict!
 <?php
 function local(int $int) {}
 
-local("string");
+local("100");
 --EXPECTF--
 Fatal error: Uncaught TypeError: Argument 1 passed to local() must be of the type integer, string given, called in %s on line %d and defined in %s:%d
 Stack trace:
-#0 %s(%d): local('string')
+#0 %s(%d): local('100')
 #1 {main}
   thrown in %s on line %d
