@@ -24,7 +24,7 @@
 extern zend_module_entry autostrict_module_entry;
 #define phpext_autostrict_ptr &autostrict_module_entry
 
-#define PHP_AUTOSTRICT_VERSION "1.0.1"
+#define PHP_AUTOSTRICT_VERSION "1.0.2"
 #define PHP_AUTOSTRICT_EXTNAME "autostrict"
 
 #ifdef PHP_WIN32
@@ -42,6 +42,7 @@ extern zend_module_entry autostrict_module_entry;
 ZEND_BEGIN_MODULE_GLOBALS(autostrict)
 	HashTable ignore;
 	HashTable ignored;
+	zend_bool enable;
 ZEND_END_MODULE_GLOBALS(autostrict)
 
 #ifdef ZTS
