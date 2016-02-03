@@ -91,7 +91,7 @@ ZEND_EXT_API zend_extension zend_extension_entry = {
 	"Joe Watkins <krakjoe@php.net>",
 	"https://github.com/krakjoe/autostrict",
 	"Copyright (c) 2016",
-	php_auto_start,		/* startup_func_t */
+	zend_auto_start,	/* startup_func_t */
 	NULL,           	/* shutdown_func_t */
 	NULL,               /* activate_func_t */
 	NULL,               /* deactivate_func_t */
