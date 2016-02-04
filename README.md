@@ -6,6 +6,9 @@ Automatic strict types in PHP 7
 
 ```autostrict``` is a Zend Extension that can force all code to be strict, because yolo!
 
+Note that due to [a little bug in PHP](https://github.com/php/php-src/commit/bec0aec11691fa712750206d1b2cdd34bf6fc5a5),
+this module only works from PHP >= 7.0.3.
+
 # Build
 
 Use something like the following to build ```autostrict```:
