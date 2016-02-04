@@ -2,7 +2,7 @@
   +----------------------------------------------------------------------+
   | PHP Version 7                                                        |
   +----------------------------------------------------------------------+
-  | Copyright (c) 1997-2015 The PHP Group                                |
+  | Copyright (c) 2016 The PHP Group                                     |
   +----------------------------------------------------------------------+
   | This source file is subject to version 3.01 of the PHP license,      |
   | that is bundled with this package in the file LICENSE, and is        |
@@ -13,6 +13,7 @@
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
   | Author: krakjoe <krakjoe@php.net>                                    |
+  | Author: Tom Van Looy <tom@ctors.net>                                 |
   +----------------------------------------------------------------------+
 */
 #ifndef HAVE_AUTO
@@ -48,6 +49,10 @@ static inline int zend_auto_start(zend_extension *extension) {
 }
 
 static inline void zend_auto_strict(zend_op_array *op) {
+	if (!ASG(enable)) {
+		return;
+	}
+
 	if ((NULL != op->filename) && 										/* There must be a filename */
 		!(op->fn_flags & ZEND_ACC_STRICT_TYPES)) {						/* We can skip over ops where strict is already set */
 		pcre_cache_entry *cache;
@@ -90,7 +95,7 @@ ZEND_EXT_API zend_extension zend_extension_entry = {
 	PHP_AUTOSTRICT_VERSION,
 	"Joe Watkins <krakjoe@php.net>",
 	"https://github.com/krakjoe/autostrict",
-	"Copyright (c) 2015",
+	"Copyright (c) 2016",
 	zend_auto_start,		/* startup_func_t */
 	NULL,           	/* shutdown_func_t */
 	NULL,               /* activate_func_t */
@@ -135,6 +140,7 @@ static PHP_INI_MH(OnUpdateIgnore) {
 
 PHP_INI_BEGIN()
 	PHP_INI_ENTRY("autostrict.ignore", "", PHP_INI_SYSTEM | PHP_INI_PERDIR, OnUpdateIgnore)
+	STD_ZEND_INI_BOOLEAN("autostrict.enable", "1", ZEND_INI_ALL, OnUpdateBool, enable, zend_autostrict_globals, autostrict_globals)
 PHP_INI_END()
 
 static inline php_autostrict_globals_ctor(zend_autostrict_globals *asg) {

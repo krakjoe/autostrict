@@ -1,12 +1,12 @@
 # autostrict
 
-Automatic strict types in PHP 7
+This is a Zend module that makes it possible to use strict types in PHP 7
+without ```define(strict_types=1)```.
 
-# How ?
+This module only works from PHP >= 7.0.3 because of
+[a bug in PHP](https://github.com/php/php-src/commit/bec0aec11691fa712750206d1b2cdd34bf6fc5a5).
 
-```autostrict``` is a Zend Extension that can force all code to be strict, because yolo!
-
-# Build
+## Build
 
 Use something like the following to build ```autostrict```:
 
@@ -19,9 +19,9 @@ make
 sudo make install
 ```
 
-# Load
+## Load
 
-Add the following to your configuration to enable the osum:
+Add the following to your configuration to enable the module:
 
 ```
 zend_extension=autostrict.so
@@ -29,7 +29,7 @@ zend_extension=autostrict.so
 
 *```autostrict``` may also be loaded with ```extension``` directive, but it's correct to use ```zend_extension```*
 
-# Configure
+## Configure
 
 You can disable strictness on a per-file basis using the configuration directive ```autostrict.ignore```.
 
