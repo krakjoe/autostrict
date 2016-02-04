@@ -36,3 +36,7 @@ You can disable strictness on a per-file basis using the configuration directive
 ```autostrict.ignore``` should be a comma separated list of regex patterns.
 
 *Note that, you may have to jump through hoops because regex and configuration don't really mix very well !*
+
+If you load the module, autostrict is enabled by default.
+To disable autostrict use the configuration directive ```autostrict.enable=0```.
+

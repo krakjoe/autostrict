@@ -48,6 +48,10 @@ static inline int zend_auto_start(zend_extension *extension) {
 }
 
 static inline void zend_auto_strict(zend_op_array *op) {
+	if (!ASG(enable)) {
+		return;
+	}
+
 	if ((NULL != op->filename) && 										/* There must be a filename */
 		!(op->fn_flags & ZEND_ACC_STRICT_TYPES)) {						/* We can skip over ops where strict is already set */
 		pcre_cache_entry *cache;
@@ -135,6 +139,7 @@ static PHP_INI_MH(OnUpdateIgnore) {
 
 PHP_INI_BEGIN()
 	PHP_INI_ENTRY("autostrict.ignore", "", PHP_INI_SYSTEM | PHP_INI_PERDIR, OnUpdateIgnore)
+	STD_ZEND_INI_BOOLEAN("autostrict.enable", "1", ZEND_INI_ALL, OnUpdateBool, enable, zend_autostrict_globals, autostrict_globals)
 PHP_INI_END()
 
 static inline php_autostrict_globals_ctor(zend_autostrict_globals *asg) {
